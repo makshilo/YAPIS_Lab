@@ -2,13 +2,13 @@ package JSQL.abstractSyntaxTree.expression;
 
 import JSQL.exception.GrammarException;
 import JSQL.library.Variables;
-import support.Column;
-import support.Row;
+import mainTypes.Column;
+import mainTypes.Row;
 
 public class LineGetExpression implements Expression {
 
-    private String name;
-    private Expression position;
+    private final String name;
+    private final Expression position;
 
     public LineGetExpression(String name, Expression position) {
         this.name = name;
@@ -28,8 +28,7 @@ public class LineGetExpression implements Expression {
 
 
         if (Variables.checkTypes("Row", value) || Variables.checkTypes("Column", value)) {
-
-            String result = "";
+            String result;
 
             try {
                 result = ((Row) value).getElement(p.intValue());

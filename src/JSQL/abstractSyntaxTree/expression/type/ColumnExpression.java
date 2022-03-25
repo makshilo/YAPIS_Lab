@@ -3,12 +3,12 @@ package JSQL.abstractSyntaxTree.expression.type;
 import JSQL.abstractSyntaxTree.expression.Expression;
 import JSQL.exception.GrammarException;
 import JSQL.library.Variables;
-import support.Table;
+import mainTypes.Table;
 
 public class ColumnExpression implements Expression {
 
-    private String name;
-    private Expression column;
+    private final String name;
+    private final Expression column;
 
     public ColumnExpression(String name, Expression column) {
         this.name = name;

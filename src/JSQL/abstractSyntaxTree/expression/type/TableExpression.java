@@ -2,13 +2,13 @@ package JSQL.abstractSyntaxTree.expression.type;
 
 import JSQL.abstractSyntaxTree.expression.Expression;
 import JSQL.exception.GrammarException;
-import support.Table;
+import mainTypes.Table;
 
 public class TableExpression implements Expression {
 
     private Table table;
-    private Expression rows;
-    private Expression columns;
+    private final Expression rows;
+    private final Expression columns;
 
     public TableExpression(Expression rows, Expression columns) {
         this.rows = rows;

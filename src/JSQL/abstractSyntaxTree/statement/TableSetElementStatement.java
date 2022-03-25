@@ -3,7 +3,7 @@ package JSQL.abstractSyntaxTree.statement;
 import JSQL.abstractSyntaxTree.expression.Expression;
 import JSQL.exception.GrammarException;
 import JSQL.library.Variables;
-import support.Table;
+import mainTypes.Table;
 
 public class TableSetElementStatement implements Statement {
 

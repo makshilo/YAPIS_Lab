@@ -2,15 +2,15 @@ package JSQL.abstractSyntaxTree.expression;
 
 import JSQL.exception.GrammarException;
 import JSQL.exception.IncompatibleType;
-import support.Column;
-import support.Row;
-import support.Table;
+import mainTypes.Column;
+import mainTypes.Row;
+import mainTypes.Table;
 
 public class BinaryExpression implements Expression {
 
-    private Expression firstExpression;
-    private Expression secondExpression;
-    private String operation;
+    private final Expression firstExpression;
+    private final Expression secondExpression;
+    private final String operation;
 
     public BinaryExpression(String operation, Expression firstExpression, Expression secondExpression) {
         this.firstExpression = firstExpression;
@@ -36,9 +36,10 @@ public class BinaryExpression implements Expression {
                 default -> throw new GrammarException("unexpected operator", 0);
             }
         } else if (first instanceof String) {
-            switch (operation) {
-                case "+" -> result = firstExpression.eval().toString() + secondExpression.eval().toString();
-                default -> throw new GrammarException("String doesn't override" + operation + "operator", 0);
+            if ("+".equals(operation)) {
+                result = firstExpression.eval().toString() + secondExpression.eval().toString();
+            } else {
+                throw new GrammarException("String doesn't override" + operation + "operator", 0);
             }
         } else if (first instanceof Table || first instanceof Column || first instanceof Row) {
             throw new GrammarException("Table doesn't override" + operation + "operator", 0);
